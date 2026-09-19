@@ -110,12 +110,12 @@ function animateParticles() {
     for (let j = i + 1; j < particles.length; j++) {
       const dx = particles[i].x - particles[j].x;
       const dy = particles[i].y - particles[j].y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
+      const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < 100) {
         ctx.beginPath();
         ctx.moveTo(particles[i].x, particles[i].y);
         ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = `rgba(26,140,255,${0.06 * (1 - dist/100)})`;
+        ctx.strokeStyle = `rgba(26,140,255,${0.06 * (1 - dist / 100)})`;
         ctx.lineWidth = 0.5;
         ctx.stroke();
       }
@@ -126,6 +126,9 @@ function animateParticles() {
 animateParticles();
 
 // Resume download using jsPDF — multi-page support
+// ★ PORTFOLIO URL — update this after deployment ★
+const PORTFOLIO_URL = 'wasifatin.github.io';
+
 function downloadResume() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
@@ -135,15 +138,20 @@ function downloadResume() {
   let y = 0;
   let pageNum = 1;
 
-  // Colors
-  const PRIMARY = [26, 140, 255];
-  const DARK = [12, 15, 22];
-  const GRAY = [80, 90, 110];
-  const WHITE = [255, 255, 255];
+  // Light-theme colors
+  const PRIMARY   = [37, 99, 235];     // Vivid blue accent
+  const NAVY      = [15, 23, 42];      // Dark navy for headings
+  const BODY      = [51, 65, 85];      // Slate for body text
+  const SUBTLE    = [100, 116, 139];   // Light slate for meta/labels
+  const WHITE     = [255, 255, 255];
+  const BG        = [248, 250, 252];   // Very light gray page bg
+  const HEADER_BG = [241, 245, 249];   // Soft blue-gray header band
+  const LINK      = [37, 99, 235];     // Blue for links
+  const DIVIDER   = [226, 232, 240];   // Subtle divider line
 
-  // Draw the dark background on every page
+  // Draw the light background on every page
   function drawPageBg() {
-    doc.setFillColor(...DARK);
+    doc.setFillColor(...BG);
     doc.rect(0, 0, W, H, 'F');
     // Thin accent line at top
     doc.setFillColor(...PRIMARY);
@@ -161,23 +169,23 @@ function downloadResume() {
     }
   }
 
-  // Footer on each page
+  // Footer on each page — includes portfolio link
   function addFooter() {
-    doc.setDrawColor(...PRIMARY);
+    doc.setDrawColor(...DIVIDER);
     doc.setLineWidth(0.3);
     doc.line(M, 289, W - M, 289);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(7);
-    doc.setTextColor(...GRAY);
-    doc.text('Fatin Sharhad  |  github.com/wasifatin  |  linkedin.com/in/fatinsharhad', W / 2, 293, { align: 'center' });
+    doc.setTextColor(...SUBTLE);
+    doc.text('Fatin Sharhad  |  ' + PORTFOLIO_URL + '  |  github.com/wasifatin  |  linkedin.com/in/fatinsharhad', W / 2, 293, { align: 'center' });
   }
 
   // ===== PAGE 1 HEADER =====
   drawPageBg();
 
-  // Header band
-  doc.setFillColor(20, 30, 55);
-  doc.rect(0, 0, W, 60, 'F');
+  // Header band — light
+  doc.setFillColor(...HEADER_BG);
+  doc.rect(0, 0, W, 62, 'F');
   doc.setFillColor(...PRIMARY);
   doc.rect(0, 0, W, 2.5, 'F');
 
@@ -185,7 +193,7 @@ function downloadResume() {
   y = 20;
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(28);
-  doc.setTextColor(...WHITE);
+  doc.setTextColor(...NAVY);
   doc.text('FATIN SHARHAD', M, y);
 
   // Tagline
@@ -195,22 +203,22 @@ function downloadResume() {
   doc.setTextColor(...PRIMARY);
   doc.text('CSE Undergraduate  |  AI & Machine Learning Enthusiast', M, y);
 
-  // Contact row
+  // Contact row — includes portfolio link
   y += 8;
   doc.setFontSize(8);
-  doc.setTextColor(160, 175, 210);
-  doc.text('github.com/wasifatin   |   linkedin.com/in/fatinsharhad   |   CF: wasi.fatin   |   Beecrowd: wasifatin', M, y);
+  doc.setTextColor(...SUBTLE);
+  doc.text(PORTFOLIO_URL + '   |   github.com/wasifatin   |   linkedin.com/in/fatinsharhad   |   CF: wasi.fatin', M, y);
 
   // Quote
   y += 7;
   doc.setFontSize(8);
-  doc.setTextColor(120, 140, 170);
+  doc.setTextColor(...SUBTLE);
   doc.setFont('helvetica', 'italic');
   doc.text('"Quitters never win, and winners never quit."', M, y);
 
   // Separator after header
   y += 5;
-  doc.setDrawColor(40, 55, 85);
+  doc.setDrawColor(...DIVIDER);
   doc.setLineWidth(0.3);
   doc.line(M, y, W - M, y);
 
@@ -226,7 +234,7 @@ function downloadResume() {
     doc.setFontSize(11);
     doc.setTextColor(...PRIMARY);
     doc.text(title.toUpperCase(), M + 6, y + 4.2);
-    doc.setDrawColor(40, 55, 85);
+    doc.setDrawColor(...DIVIDER);
     doc.setLineWidth(0.2);
     doc.line(M + 6, y + 6, W - M, y + 6);
     y += 13;
@@ -235,7 +243,7 @@ function downloadResume() {
   function bodyText(text, maxW, color) {
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(9);
-    doc.setTextColor(...(color || GRAY));
+    doc.setTextColor(...(color || BODY));
     const lines = doc.splitTextToSize(text, maxW || (W - M * 2));
     lines.forEach(line => {
       ensureSpace(5);
@@ -248,10 +256,10 @@ function downloadResume() {
     ensureSpace(7);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(9);
-    doc.setTextColor(...WHITE);
+    doc.setTextColor(...NAVY);
     doc.text(label + ':', M, y);
     doc.setFont('helvetica', 'normal');
-    doc.setTextColor(...GRAY);
+    doc.setTextColor(...BODY);
     const lines = doc.splitTextToSize(val, W - M * 2 - 30);
     doc.text(lines, M + 30, y);
     y += Math.max(lines.length * 4.2, 5.5);
@@ -267,7 +275,7 @@ function downloadResume() {
   ensureSpace(18);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
-  doc.setTextColor(...WHITE);
+  doc.setTextColor(...NAVY);
   doc.text('Daffodil International University', M, y);
   y += 5;
   doc.setFont('helvetica', 'normal');
@@ -275,7 +283,7 @@ function downloadResume() {
   doc.setTextColor(...PRIMARY);
   doc.text('B.Sc. in Computer Science & Engineering', M, y);
   y += 5;
-  doc.setTextColor(...GRAY);
+  doc.setTextColor(...BODY);
   doc.text('Department of CSE  |  2nd Year, 2nd Semester  |  Expected Graduation: April 2029', M, y);
   y += 8;
 
@@ -292,7 +300,7 @@ function downloadResume() {
   ensureSpace(12);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
-  doc.setTextColor(...WHITE);
+  doc.setTextColor(...NAVY);
   doc.text('Land Management System', M, y);
   y += 5;
   doc.setFont('helvetica', 'normal');
@@ -306,7 +314,7 @@ function downloadResume() {
   ensureSpace(8);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8);
-  doc.setTextColor(...WHITE);
+  doc.setTextColor(...NAVY);
   doc.text('Key Features:', M, y);
   y += 5;
   const features = [
@@ -321,13 +329,13 @@ function downloadResume() {
     ensureSpace(5);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(8.5);
-    doc.setTextColor(...GRAY);
+    doc.setTextColor(...BODY);
     doc.text('•  ' + f, M + 3, y);
     y += 4.5;
   });
   y += 2;
   ensureSpace(5);
-  doc.setTextColor(100, 160, 255);
+  doc.setTextColor(...LINK);
   doc.setFontSize(8.5);
   doc.text('GitHub: github.com/wasifatin/land-tax-management', M, y);
   y += 7;
@@ -344,7 +352,7 @@ function downloadResume() {
     ensureSpace(14);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(9.5);
-    doc.setTextColor(...WHITE);
+    doc.setTextColor(...NAVY);
     doc.text('▸  ' + title, M, y);
     y += 5;
     bodyText(detail);
@@ -373,7 +381,7 @@ function downloadResume() {
     ensureSpace(16);
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(10);
-    doc.setTextColor(...WHITE);
+    doc.setTextColor(...NAVY);
     doc.text(title, M, y);
     y += 5;
     doc.setFont('helvetica', 'italic');
@@ -385,7 +393,7 @@ function downloadResume() {
       ensureSpace(5);
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(8.5);
-      doc.setTextColor(...GRAY);
+      doc.setTextColor(...BODY);
       doc.text('•  ' + d, M + 3, y);
       y += 4.5;
     });
@@ -397,13 +405,13 @@ function downloadResume() {
   ensureSpace(10);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(9);
-  doc.setTextColor(...WHITE);
+  doc.setTextColor(...NAVY);
   doc.text('Codeforces:', M, y);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(...PRIMARY);
   doc.text('wasi.fatin', M + 24, y);
   doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...WHITE);
+  doc.setTextColor(...NAVY);
   doc.text('Beecrowd:', M + 55, y);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(...PRIMARY);
@@ -426,7 +434,7 @@ function downloadResume() {
     ensureSpace(5);
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(8.5);
-    doc.setTextColor(...GRAY);
+    doc.setTextColor(...BODY);
     doc.text('•  ' + item, M + 3, y);
     y += 4.5;
   });
@@ -437,29 +445,39 @@ function downloadResume() {
   bodyText('Build a strong career in Artificial Intelligence and Machine Learning. Aspiring to become a skilled Machine Learning Engineer who works on intelligent, practical, and impactful solutions that solve real-world problems. Focused on gaining practical experience through hands-on projects, research, competitive programming, and real-world applications.');
   y += 5;
 
-  // ===== CONNECT =====
+  // ===== CONNECT — includes portfolio link =====
   sectionHeader('Connect With Me');
-  ensureSpace(10);
+  ensureSpace(18);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9);
-  doc.setTextColor(...GRAY);
+
+  // Portfolio (first and prominent)
+  doc.setTextColor(...NAVY);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Portfolio:', M, y);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(...LINK);
+  doc.text(PORTFOLIO_URL, M + 20, y);
+  y += 5;
+
+  doc.setTextColor(...SUBTLE);
   doc.text('GitHub:', M, y);
-  doc.setTextColor(100, 160, 255);
+  doc.setTextColor(...LINK);
   doc.text('github.com/wasifatin', M + 18, y);
   y += 5;
-  doc.setTextColor(...GRAY);
+  doc.setTextColor(...SUBTLE);
   doc.text('LinkedIn:', M, y);
-  doc.setTextColor(100, 160, 255);
+  doc.setTextColor(...LINK);
   doc.text('linkedin.com/in/fatinsharhad', M + 18, y);
   y += 5;
-  doc.setTextColor(...GRAY);
+  doc.setTextColor(...SUBTLE);
   doc.text('Codeforces:', M, y);
-  doc.setTextColor(100, 160, 255);
+  doc.setTextColor(...LINK);
   doc.text('codeforces.com/profile/wasi.fatin', M + 24, y);
   y += 5;
-  doc.setTextColor(...GRAY);
+  doc.setTextColor(...SUBTLE);
   doc.text('Beecrowd:', M, y);
-  doc.setTextColor(100, 160, 255);
+  doc.setTextColor(...LINK);
   doc.text('beecrowd.com.br/judge/en/profile/wasifatin', M + 22, y);
 
   // Final footer on last page

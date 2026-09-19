@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fatin Sharhad — CSE Undergraduate | AI &amp; ML Enthusiast</title>
+  <meta name="description" content="Portfolio of Fatin Sharhad — CSE undergraduate at Daffodil International University, passionate about Artificial Intelligence and Machine Learning." />
+  <meta name="author" content="Fatin Sharhad" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav id="navbar" class="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo"><span class="logo-bracket">&lt;</span>FS<span class="logo-bracket">/&gt;</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#achievements" class="nav-link">Achievements</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><button class="btn-resume-nav" onclick="downloadResume()"><i class="fas fa-download"></i> Resume</button></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section id="hero" class="hero-section">
+    <canvas id="particleCanvas"></canvas>
+    <div class="hero-glow glow-1"></div>
+    <div class="hero-glow glow-2"></div>
+    <div class="hero-content">
+      <div class="hero-left">
+        <div class="hero-badge"><span class="badge-dot"></span>Open to Internships &amp; Opportunities</div>
+        <h1 class="hero-name">Fatin Sharhad</h1>
+        <p class="hero-tagline"><span class="tagline-prefix">CSE Undergraduate</span><span class="tagline-separator"> &middot; </span><span class="type-wrap"><span class="typed-text" id="typedText"></span><span class="cursor">|</span></span></p>
+        <p class="hero-quote"><i class="fas fa-quote-left quote-icon"></i>Quitters never win, and winners never quit.</p>
+        <div class="hero-cta">
+          <a href="#about" class="btn-primary"><i class="fas fa-user"></i> About Me</a>
+          <a href="#projects" class="btn-secondary"><i class="fas fa-code"></i> View Projects</a>
+          <button class="btn-download" onclick="downloadResume()"><i class="fas fa-file-arrow-down"></i> Download Resume</button>
+        </div>
+        <div class="hero-socials">
+          <a href="https://github.com/wasifatin" target="_blank" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/fatinsharhad/" target="_blank" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://codeforces.com/profile/wasi.fatin" target="_blank" class="social-link" aria-label="Codeforces"><i class="fas fa-code"></i></a>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="profile-ring-outer">
+          <div class="profile-ring-inner">
+            <img src="profile.jpg" alt="Fatin Sharhad" class="profile-photo" />
+          </div>
+          <div class="ring-orbit orbit-1"><div class="orbit-dot dot-python"><i class="fab fa-python"></i></div></div>
+          <div class="ring-orbit orbit-2"><div class="orbit-dot dot-ai"><i class="fas fa-brain"></i></div></div>
+          <div class="ring-orbit orbit-3"><div class="orbit-dot dot-git"><i class="fab fa-git-alt"></i></div></div>
+        </div>
+      </div>
+    </div>
+    <a href="#about" class="scroll-indicator" aria-label="Scroll down"><i class="fas fa-chevron-down"></i></a>
+  </section>
+
+  <!-- INTRO VIDEO SECTION -->
+  <section id="intro-video" class="intro-video-section">
+    <div class="container">
+      <div class="section-label">Introduction</div>
+      <h2 class="section-title">Watch My <span class="accent">Introduction</span></h2>
+      <p class="section-subtitle">A short video about who I am and what I am working towards.</p>
+      <!--
+        VIDEO LINK PLACEHOLDER
+        To add your intro video:
+        1. Upload to YouTube, Loom, or any platform
+        2. Uncomment the iframe below and replace VIDEO_URL with your embed link
+           e.g. https://www.youtube.com/embed/YOUR_VIDEO_ID
+      -->
+      <div class="video-container">
+        <div class="video-placeholder">
+          <div class="video-icon-wrap"><i class="fas fa-circle-play video-icon"></i></div>
+          <h3 class="video-placeholder-title">Introduction Video Coming Soon</h3>
+          <p class="video-placeholder-text">I am working on my introduction video. Check back soon!</p>
+          <p class="video-link-note"><i class="fas fa-info-circle"></i> To add your video: uncomment the &lt;iframe&gt; in <strong>index.html</strong> inside the <strong>#intro-video</strong> section and paste your embed URL.</p>
+          <!-- UNCOMMENT AND PASTE YOUR VIDEO URL BELOW: -->
+          <!-- <iframe src="YOUR_VIDEO_EMBED_URL_HERE" title="Introduction Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%;height:100%;border-radius:16px;"></iframe> -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="section-label">About</div>
+      <h2 class="section-title">Who <span class="accent">I Am</span></h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>Hi, I am <strong>Fatin Sharhad</strong>, a Computer Science and Engineering undergraduate at Daffodil International University. I am passionate about programming, problem-solving, and exploring the fields of <span class="highlight">Artificial Intelligence</span> and <span class="highlight">Machine Learning</span>.</p>
+          <p>I believe in a simple philosophy: <em>"Quitters never win, and winners never quit."</em> It reminds me to stay consistent, keep learning, and push forward even when things get challenging.</p>
+          <p>Currently, I am building my foundation in programming, <span class="highlight">Data Structures &amp; Algorithms</span>, mathematics, and core computer science concepts. My long-term goal is to grow into a skilled <strong>Machine Learning Engineer</strong>.</p>
+          <div class="about-stats">
+            <div class="stat-card"><div class="stat-num">2nd</div><div class="stat-label">Year</div></div>
+            <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">Dean's Awards</div></div>
+            <div class="stat-card"><div class="stat-num">1</div><div class="stat-label">Project</div></div>
+            <div class="stat-card"><div class="stat-num">4+</div><div class="stat-label">Languages</div></div>
+          </div>
+        </div>
+        <div class="about-edu">
+          <div class="edu-card glass-card">
+            <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="edu-details">
+              <h3>Daffodil International University</h3>
+              <p class="edu-degree">B.Sc. in Computer Science &amp; Engineering</p>
+              <p class="edu-dept">Department of CSE</p>
+              <div class="edu-meta">
+                <span class="edu-year"><i class="fas fa-calendar-alt"></i> 2nd Year, 2nd Semester</span>
+                <span class="edu-grad"><i class="fas fa-flag-checkered"></i> Expected: April 2029</span>
+              </div>
+            </div>
+          </div>
+          <div class="career-goal-card glass-card">
+            <div class="goal-icon"><i class="fas fa-bullseye"></i></div>
+            <h3>Career Goal</h3>
+            <p>Build a strong career in <strong>Artificial Intelligence &amp; Machine Learning</strong>, becoming a skilled <span class="highlight">ML Engineer</span> creating intelligent, practical, impactful solutions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="skills-section">
+    <div class="container">
+      <div class="section-label">Skills</div>
+      <h2 class="section-title">Technical <span class="accent">Arsenal</span></h2>
+      <p class="section-subtitle">Technologies and concepts I work with</p>
+      <div class="skills-grid">
+        <div class="skill-category glass-card">
+          <div class="skill-cat-header"><div class="skill-cat-icon"><i class="fas fa-terminal"></i></div><h3>Programming Languages</h3></div>
+          <div class="skill-pills">
+            <span class="pill pill-primary">C</span>
+            <span class="pill pill-primary">C++</span>
+            <span class="pill pill-primary"><i class="fab fa-python"></i> Python</span>
+            <span class="pill pill-primary"><i class="fab fa-java"></i> Java</span>
+          </div>
+        </div>
+        <div class="skill-category glass-card">
+          <div class="skill-cat-header"><div class="skill-cat-icon"><i class="fas fa-sitemap"></i></div><h3>CS &amp; DSA</h3></div>
+          <div class="skill-pills">
+            <span class="pill pill-second">Data Structures</span>
+            <span class="pill pill-second">Algorithms</span>
+            <span class="pill pill-second">OOP</span>
+            <span class="pill pill-second">Problem Solving</span>
+            <span class="pill pill-second">Competitive Programming</span>
+          </div>
+        </div>
+        <div class="skill-category glass-card">
+          <div class="skill-cat-header"><div class="skill-cat-icon"><i class="fas fa-tools"></i></div><h3>Tools &amp; Technologies</h3></div>
+          <div class="skill-pills">
+            <span class="pill pill-third"><i class="fas fa-code"></i> VS Code</span>
+            <span class="pill pill-third">Code::Blocks</span>
+            <span class="pill pill-third"><i class="fab fa-git-alt"></i> Git</span>
+            <span class="pill pill-third"><i class="fab fa-github"></i> GitHub</span>
+            <span class="pill pill-third">NetBeans</span>
+          </div>
+        </div>
+        <div class="skill-category glass-card">
+          <div class="skill-cat-header"><div class="skill-cat-icon"><i class="fas fa-book-open"></i></div><h3>Fundamentals</h3></div>
+          <div class="skill-pills">
+            <span class="pill pill-fourth">Programming Fundamentals</span>
+            <span class="pill pill-fourth">Computer Fundamentals</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="projects-section">
+    <div class="container">
+      <div class="section-label">Projects</div>
+      <h2 class="section-title">Featured <span class="accent">Project</span></h2>
+      <p class="section-subtitle">Building real-world solutions with code</p>
+      <div class="project-card-wrap">
+        <div class="project-card glass-card featured-project">
+          <div class="project-badge">Featured</div>
+          <div class="project-header">
+            <div class="project-icon"><i class="fas fa-landmark"></i></div>
+            <div>
+              <h3 class="project-title">Land Management System</h3>
+              <p class="project-subtitle">C-based land records &amp; tax management system</p>
+            </div>
+          </div>
+          <p class="project-desc">A C-based land management system developed to organize land records, calculate land taxes, and keep track of land-related transactions. Features a menu-driven interface with linked list, stack, and queue implementations.</p>
+          <div class="project-features">
+            <h4><i class="fas fa-star"></i> Key Features</h4>
+            <ul class="features-list">
+              <li><i class="fas fa-check-circle"></i> Manage and organize land records</li>
+              <li><i class="fas fa-check-circle"></i> Add, update, and view records</li>
+              <li><i class="fas fa-check-circle"></i> Calculate land taxes automatically</li>
+              <li><i class="fas fa-check-circle"></i> Track payments and transactions</li>
+              <li><i class="fas fa-check-circle"></i> Maintain transaction history</li>
+              <li><i class="fas fa-check-circle"></i> Intuitive menu-driven interface</li>
+            </ul>
+          </div>
+          <div class="tech-stack">
+            <h4><i class="fas fa-layer-group"></i> Tech Stack</h4>
+            <div class="tech-pills">
+              <span class="tech-pill">C</span>
+              <span class="tech-pill">Data Structures</span>
+              <span class="tech-pill">Linked List</span>
+              <span class="tech-pill">Stack</span>
+              <span class="tech-pill">Queue</span>
+            </div>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/wasifatin/land-tax-management" target="_blank" class="btn-project"><i class="fab fa-github"></i> View on GitHub</a>
+            <span class="btn-project btn-project-disabled"><i class="fas fa-external-link-alt"></i> Live Demo (N/A)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements" class="achievements-section">
+    <div class="container">
+      <div class="section-label">Achievements</div>
+      <h2 class="section-title">Awards &amp; <span class="accent">Recognition</span></h2>
+      <p class="section-subtitle">Milestones that mark my journey</p>
+      <div class="achievements-grid">
+        <div class="achievement-card glass-card">
+          <div class="achievement-icon icon-gold"><i class="fas fa-award"></i></div>
+          <div class="achievement-content">
+            <h3>Dean's List Award</h3>
+            <p class="achievement-meta">Fall 2025 &amp; Spring 2026 &middot; Daffodil International University</p>
+            <p class="achievement-desc">Received the Dean's List Award for two consecutive semesters in the Dept. of CSE — recognition of academic excellence.</p>
+            <span class="achievement-badge badge-gold">2x Consecutive</span>
+          </div>
+        </div>
+        <div class="achievement-card glass-card">
+          <div class="achievement-icon icon-blue"><i class="fas fa-laptop-code"></i></div>
+          <div class="achievement-content">
+            <h3>Take-Off Programming Contest</h3>
+            <p class="achievement-meta">Fall 2025 &middot; DIU Programming Contest</p>
+            <p class="achievement-desc">Advanced through multiple rounds of the competitive programming contest, showcasing algorithmic problem-solving.</p>
+            <div class="contest-rounds">
+              <span class="round-badge"><i class="fas fa-trophy"></i> Preliminary: <strong>25th</strong></span>
+              <span class="round-badge"><i class="fas fa-medal"></i> Final: <strong>100th</strong></span>
+            </div>
+          </div>
+        </div>
+        <div class="achievement-card glass-card">
+          <div class="achievement-icon icon-purple"><i class="fas fa-calculator"></i></div>
+          <div class="achievement-content">
+            <h3>DIU Mathematics Olympiad</h3>
+            <p class="achievement-meta">Summer 2025 &middot; DIUMS &mdash; Faculty of Science &amp; IT</p>
+            <p class="achievement-desc">Participated in the Preliminary Round of the DIU Mathematics Olympiad organized by the DIU Mathematical Society.</p>
+            <span class="achievement-badge badge-purple">Participant</span>
+          </div>
+        </div>
+        <div class="achievement-card glass-card">
+          <div class="achievement-icon icon-green"><i class="fas fa-star"></i></div>
+          <div class="achievement-content">
+            <h3>Best Class Representative</h3>
+            <p class="achievement-meta">CCS Cultural Fest 2022 &middot; Chittagong Collegiate School</p>
+            <p class="achievement-desc">Recognized as the Best Class Representative for outstanding active participation and contribution to the cultural fest.</p>
+            <span class="achievement-badge badge-green">Best CR Award</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="experience-section">
+    <div class="container">
+      <div class="section-label">Experience</div>
+      <h2 class="section-title">Leadership &amp; <span class="accent">Roles</span></h2>
+      <p class="section-subtitle">Responsibilities beyond academics</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass-card">
+            <div class="exp-header">
+              <div class="exp-icon"><i class="fas fa-users"></i></div>
+              <div>
+                <h3 class="exp-title">Class Representative — CSE 69_L</h3>
+                <p class="exp-company">Daffodil International University</p>
+                <span class="exp-type">Leadership Role</span>
+              </div>
+            </div>
+            <p class="exp-desc">Maintaining effective communication between students, faculty, and university authorities.</p>
+            <div class="resp-list">
+              <h4>Responsibilities</h4>
+              <ul>
+                <li><i class="fas fa-angle-right"></i> Share academic announcements and updates</li>
+                <li><i class="fas fa-angle-right"></i> Coordinate class-related information</li>
+                <li><i class="fas fa-angle-right"></i> Communicate student concerns to authorities</li>
+                <li><i class="fas fa-angle-right"></i> Assist in organizing academic activities</li>
+                <li><i class="fas fa-angle-right"></i> Maintain smooth class communication</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass-card">
+            <div class="exp-header">
+              <div class="exp-icon"><i class="fas fa-bullhorn"></i></div>
+              <div>
+                <h3 class="exp-title">Campus Ambassador — CCS Cultural Club</h3>
+                <p class="exp-company">Chittagong Collegiate School</p>
+                <span class="exp-type">Ambassador Role</span>
+              </div>
+            </div>
+            <p class="exp-desc">Promoted club activities and connected with students across campus to increase awareness and participation.</p>
+            <div class="resp-list">
+              <h4>Responsibilities</h4>
+              <ul>
+                <li><i class="fas fa-angle-right"></i> Promoted club events and activities</li>
+                <li><i class="fas fa-angle-right"></i> Encouraged student participation</li>
+                <li><i class="fas fa-angle-right"></i> Communicated club initiatives to students</li>
+                <li><i class="fas fa-angle-right"></i> Supported event-related activities</li>
+                <li><i class="fas fa-angle-right"></i> Increased club awareness on campus</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPETITIVE PROGRAMMING -->
+  <section id="cp" class="cp-section">
+    <div class="container">
+      <div class="section-label">Competitive Programming</div>
+      <h2 class="section-title">Coding <span class="accent">Profiles</span></h2>
+      <p class="section-subtitle">Sharpening problem-solving through competitive programming</p>
+      <div class="cp-grid">
+        <a href="https://codeforces.com/profile/wasi.fatin" target="_blank" class="cp-card glass-card">
+          <div class="cp-logo">
+            <svg width="40" height="40" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="8" height="20" x="4" y="16" rx="2" fill="#1a8cff"/>
+              <rect width="8" height="28" x="14" y="8" rx="2" fill="#cc3333"/>
+              <rect width="8" height="14" x="24" y="22" rx="2" fill="#1a8cff"/>
+            </svg>
+          </div>
+          <div class="cp-info"><h3>Codeforces</h3><p class="cp-handle">wasi.fatin</p><p class="cp-desc">Algorithms &amp; competitive problem solving</p></div>
+          <i class="fas fa-arrow-up-right-from-square cp-link-icon"></i>
+        </a>
+        <a href="https://www.beecrowd.com.br/judge/en/profile/wasifatin" target="_blank" class="cp-card glass-card">
+          <div class="cp-logo">
+            <svg width="40" height="40" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="18" cy="18" r="16" fill="#f5a62320" stroke="#f5a623" stroke-width="2"/>
+              <text x="50%" y="57%" dominant-baseline="middle" text-anchor="middle" font-size="20" font-weight="bold" fill="#f5a623">B</text>
+            </svg>
+          </div>
+          <div class="cp-info"><h3>Beecrowd</h3><p class="cp-handle">wasifatin</p><p class="cp-desc">Programming challenges &amp; logic building</p></div>
+          <i class="fas fa-arrow-up-right-from-square cp-link-icon"></i>
+        </a>
+      </div>
+      <div class="cp-philosophy glass-card">
+        <i class="fas fa-lightbulb philosophy-icon"></i>
+        <p>I enjoy competitive programming as a way to improve my <strong>problem-solving skills</strong>, algorithmic thinking, and ability to approach programming challenges efficiently. Every problem solved is a step toward becoming a better engineer.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications" class="cert-section">
+    <div class="container">
+      <div class="section-label">Certifications</div>
+      <h2 class="section-title">Learning <span class="accent">Journey</span></h2>
+      <div class="cert-card glass-card">
+        <div class="cert-icon"><i class="fas fa-road"></i></div>
+        <div class="cert-content">
+          <h3>Building My Foundation</h3>
+          <p>I currently do not have any professional certifications. I am actively focusing on <strong>strengthening my fundamentals</strong> in programming, DSA, and core CS concepts.</p>
+          <div class="roadmap-items">
+            <div class="roadmap-item"><i class="fas fa-circle-dot"></i><span>Deep-dive into Data Structures &amp; Algorithms</span></div>
+            <div class="roadmap-item"><i class="fas fa-circle-dot"></i><span>Python for Machine Learning &amp; AI</span></div>
+            <div class="roadmap-item"><i class="fas fa-circle-dot"></i><span>Mathematics for ML (Linear Algebra, Calculus, Probability)</span></div>
+            <div class="roadmap-item"><i class="fas fa-circle-dot"></i><span>Hands-on ML projects &amp; research</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">Let's <span class="accent">Connect</span></h2>
+      <p class="section-subtitle">Reach out — I am always open to new opportunities and conversations.</p>
+      <div class="contact-grid">
+        <a href="https://github.com/wasifatin" target="_blank" class="contact-card glass-card">
+          <div class="contact-icon"><i class="fab fa-github"></i></div>
+          <div class="contact-info"><h3>GitHub</h3><p>github.com/wasifatin</p></div>
+          <i class="fas fa-arrow-right contact-arrow"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/fatinsharhad/" target="_blank" class="contact-card glass-card">
+          <div class="contact-icon contact-icon-linkedin"><i class="fab fa-linkedin-in"></i></div>
+          <div class="contact-info"><h3>LinkedIn</h3><p>linkedin.com/in/fatinsharhad</p></div>
+          <i class="fas fa-arrow-right contact-arrow"></i>
+        </a>
+        <a href="https://codeforces.com/profile/wasi.fatin" target="_blank" class="contact-card glass-card">
+          <div class="contact-icon contact-icon-cf"><i class="fas fa-code"></i></div>
+          <div class="contact-info"><h3>Codeforces</h3><p>wasi.fatin</p></div>
+          <i class="fas fa-arrow-right contact-arrow"></i>
+        </a>
+        <div class="contact-card glass-card" onclick="downloadResume()" style="cursor:pointer;">
+          <div class="contact-icon contact-icon-resume"><i class="fas fa-file-pdf"></i></div>
+          <div class="contact-info"><h3>Resume</h3><p>Download my portfolio as PDF</p></div>
+          <i class="fas fa-download contact-arrow"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo"><span class="logo-bracket">&lt;</span>FS<span class="logo-bracket">/&gt;</span></div>
+      <p class="footer-tagline">Fatin Sharhad &middot; CSE Undergraduate &middot; AI &amp; ML Enthusiast</p>
+      <p class="footer-quote">"Quitters never win, and winners never quit."</p>
+      <div class="footer-socials">
+        <a href="https://github.com/wasifatin" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/fatinsharhad/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://codeforces.com/profile/wasi.fatin" target="_blank"><i class="fas fa-code"></i></a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Fatin Sharhad. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

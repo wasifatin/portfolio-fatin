@@ -127,7 +127,7 @@ animateParticles();
 
 // Resume download using jsPDF — multi-page support
 // ★ PORTFOLIO URL — update this after deployment ★
-const PORTFOLIO_URL = 'wasifatin.github.io';
+const PORTFOLIO_URL = 'https://portfolio-fatin-plum.vercel.app/';
 
 function downloadResume() {
   const { jsPDF } = window.jspdf;
@@ -139,15 +139,15 @@ function downloadResume() {
   let pageNum = 1;
 
   // Light-theme colors
-  const PRIMARY   = [37, 99, 235];     // Vivid blue accent
-  const NAVY      = [15, 23, 42];      // Dark navy for headings
-  const BODY      = [51, 65, 85];      // Slate for body text
-  const SUBTLE    = [100, 116, 139];   // Light slate for meta/labels
-  const WHITE     = [255, 255, 255];
-  const BG        = [248, 250, 252];   // Very light gray page bg
+  const PRIMARY = [37, 99, 235];     // Vivid blue accent
+  const NAVY = [15, 23, 42];      // Dark navy for headings
+  const BODY = [51, 65, 85];      // Slate for body text
+  const SUBTLE = [100, 116, 139];   // Light slate for meta/labels
+  const WHITE = [255, 255, 255];
+  const BG = [248, 250, 252];   // Very light gray page bg
   const HEADER_BG = [241, 245, 249];   // Soft blue-gray header band
-  const LINK      = [37, 99, 235];     // Blue for links
-  const DIVIDER   = [226, 232, 240];   // Subtle divider line
+  const LINK = [37, 99, 235];     // Blue for links
+  const DIVIDER = [226, 232, 240];   // Subtle divider line
 
   // Draw the light background on every page
   function drawPageBg() {

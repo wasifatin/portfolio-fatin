@@ -128,6 +128,7 @@ animateParticles();
 // Resume download using jsPDF — multi-page support
 // ★ PORTFOLIO URL — update this after deployment ★
 const PORTFOLIO_URL = 'https://portfolio-fatin-plum.vercel.app/';
+const INTRO_VIDEO_URL = 'https://youtu.be/XqLx0zgbnvk';
 
 function downloadResume() {
   const { jsPDF } = window.jspdf;
@@ -447,7 +448,7 @@ function downloadResume() {
 
   // ===== CONNECT — includes portfolio link =====
   sectionHeader('Connect With Me');
-  ensureSpace(18);
+  ensureSpace(32);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9);
 
@@ -458,27 +459,50 @@ function downloadResume() {
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(...LINK);
   doc.text(PORTFOLIO_URL, M + 20, y);
+  if (typeof doc.link === 'function') {
+    doc.link(M + 20, y - 3, 75, 4, { url: PORTFOLIO_URL });
+  }
   y += 5;
 
   doc.setTextColor(...SUBTLE);
   doc.text('GitHub:', M, y);
   doc.setTextColor(...LINK);
   doc.text('github.com/wasifatin', M + 18, y);
+  if (typeof doc.link === 'function') {
+    doc.link(M + 18, y - 3, 45, 4, { url: 'https://github.com/wasifatin' });
+  }
   y += 5;
   doc.setTextColor(...SUBTLE);
   doc.text('LinkedIn:', M, y);
   doc.setTextColor(...LINK);
   doc.text('linkedin.com/in/fatinsharhad', M + 18, y);
+  if (typeof doc.link === 'function') {
+    doc.link(M + 18, y - 3, 55, 4, { url: 'https://www.linkedin.com/in/fatinsharhad/' });
+  }
   y += 5;
   doc.setTextColor(...SUBTLE);
   doc.text('Codeforces:', M, y);
   doc.setTextColor(...LINK);
   doc.text('codeforces.com/profile/wasi.fatin', M + 24, y);
+  if (typeof doc.link === 'function') {
+    doc.link(M + 24, y - 3, 60, 4, { url: 'https://codeforces.com/profile/wasi.fatin' });
+  }
   y += 5;
   doc.setTextColor(...SUBTLE);
   doc.text('Beecrowd:', M, y);
   doc.setTextColor(...LINK);
   doc.text('beecrowd.com.br/judge/en/profile/wasifatin', M + 22, y);
+  if (typeof doc.link === 'function') {
+    doc.link(M + 22, y - 3, 75, 4, { url: 'https://www.beecrowd.com.br/judge/en/profile/wasifatin' });
+  }
+  y += 5;
+  doc.setTextColor(...SUBTLE);
+  doc.text('Intro Video:', M, y);
+  doc.setTextColor(...LINK);
+  doc.text(INTRO_VIDEO_URL, M + 22, y);
+  if (typeof doc.link === 'function') {
+    doc.link(M + 22, y - 3, 55, 4, { url: INTRO_VIDEO_URL });
+  }
 
   // Final footer on last page
   addFooter();
